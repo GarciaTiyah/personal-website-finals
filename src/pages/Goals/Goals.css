@@ -1,0 +1,131 @@
+.goals-section {
+  padding: 2rem;
+}
+
+.goals-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 3rem;
+  padding: 1rem;
+}
+
+.goals-category {
+  flex: 1;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.goal-card {
+  background-color: rgba(191, 64, 191, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(191, 64, 191, 0.3);
+  transition: transform var(--transition-duration) ease,
+              box-shadow var(--transition-duration) ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.goal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.goal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(191, 64, 191, 0.4);
+  background-color: rgba(191, 64, 191, 1);
+}
+
+.goal-title {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.goal-description {
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.goal-timeline {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .goals-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0.5rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+  }
+
+  .goal-card {
+    padding: 1.2rem;
+  }
+
+  .goal-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .goals-section {
+    padding: 1rem;
+  }
+
+  .category-title::after {
+    width: 40px;
+  }
+}

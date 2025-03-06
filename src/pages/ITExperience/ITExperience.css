@@ -1,0 +1,68 @@
+.experience-section {
+  padding: 2rem;
+}
+
+.skills-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skill-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.skill-percentage {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.skill-progress-bg {
+  background: var(--background-color);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 0 1rem;
+  }
+
+  .skill-item {
+    padding: 1.2rem;
+  }
+
+  .skill-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-item {
+    padding: 1rem;
+  }
+}

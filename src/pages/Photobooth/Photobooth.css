@@ -1,0 +1,410 @@
+.photobooth-container {
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.photobooth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #FF4081, #2196F3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 64, 129, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  opacity: 0.9;
+  transform: translateY(-5px);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photobooth-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-section {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.camera-section {
+  width: 640px;
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.camera-section video {
+  width: 100%;
+  height: auto;
+  transform: scaleX(-1); /* Mirror effect for live preview only */
+}
+
+.camera-section video.hidden {
+  display: none;
+}
+
+.camera-section video.visible {
+  display: block;
+}
+
+/* Filter Styles */
+.none { filter: none; }
+.greyscale { filter: grayscale(100%); }
+.sepia { filter: sepia(100%); }
+.warm { filter: contrast(110%) brightness(110%) saturate(130%); }
+.cold { filter: contrast(90%) brightness(100%) saturate(70%) hue-rotate(180deg); }
+.soft { filter: brightness(110%) contrast(90%) saturate(90%) blur(0.5px); }
+
+.photos-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 240px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  height: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.preview-photo {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-photo:hover {
+  transform: scale(1.05);
+}
+
+.preview-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px;
+  font-size: 0.8rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.preview-photo:hover .edit-overlay {
+  opacity: 1;
+}
+
+.countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.countdown-number {
+  font-size: 8rem;
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.filter-section,
+.frame-section {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.filter-section h3,
+.frame-section h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.filter-options,
+.frame-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-button,
+.frame-button,
+.start-button,
+.capture-button,
+.download-button,
+.edit-button,
+.reset-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.filter-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.filter-button.active {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.frame-button {
+  min-width: 100px;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.frame-button span {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.frame-button.active {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.start-button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  margin: 2rem auto;
+  display: block;
+}
+
+.capture-button {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.download-button {
+  background: linear-gradient(45deg, #FF4081, #E91E63);
+  color: white;
+}
+
+.edit-button {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+}
+
+.reset-button {
+  background: linear-gradient(45deg, #9C27B0, #7B1FA2);
+  color: white;
+}
+
+.filter-button:hover,
+.frame-button:hover,
+.start-button:hover,
+.capture-button:hover,
+.download-button:hover,
+.edit-button:hover,
+.reset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.final-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .main-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .camera-section {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .photos-preview {
+    width: 100%;
+    max-width: 640px;
+    flex-direction: row;
+  }
+
+  .preview-photo {
+    flex: 1;
+  }
+  
+  .filter-section,
+  .frame-section {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .photobooth-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .filter-options,
+  .frame-options {
+    gap: 0.5rem;
+  }
+  
+  .filter-button,
+  .frame-button,
+  .start-button,
+  .capture-button,
+  .download-button,
+  .edit-button,
+  .reset-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .photobooth-container {
+    padding: 1rem;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .photos-preview {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .preview-photo {
+    width: 45%;
+    margin: 0.25rem;
+  }
+  
+  .countdown-number {
+    font-size: 5rem;
+  }
+  
+  .filter-section,
+  .frame-section {
+    padding: 1rem;
+  }
+  
+  .filter-button,
+  .frame-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .frame-button span {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,96 @@
+.music-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.disc-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.disc-container.spinning {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.disc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.1);
+}
+
+.custom-audio-player {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px;
+  padding: 1rem !important;
+}
+
+.custom-audio-player .rhap_main-controls-button {
+  color: #1DB954 !important;
+}
+
+.custom-audio-player .rhap_progress-filled {
+  background-color: #1DB954 !important;
+}
+
+.custom-audio-player .rhap_progress-indicator {
+  background: #1DB954 !important;
+}
+
+.custom-audio-player .rhap_volume-indicator {
+  background: #1DB954 !important;
+}
+
+.custom-audio-player .rhap_progress-bar {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.custom-audio-player .rhap_time {
+  color: #ffffff !important;
+}
+
+.custom-audio-player .rhap_volume-button {
+  color: #ffffff !important;
+}
+
+.song-title {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .disc-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .music-player-container {
+    padding: 1rem;
+  }
+}
